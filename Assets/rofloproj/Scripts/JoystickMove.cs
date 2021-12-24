@@ -55,7 +55,9 @@ public class JoystickMove : MonoBehaviour
             foreach (var rbody in rb)
             {
                 if (rbody.gameObject.activeSelf)
+                {
                     rbody.velocity = new Vector3(horizontalMove, rbody.velocity.y, verticalMove);
+                }
             }
             yield return new WaitForFixedUpdate();
         }
@@ -67,7 +69,9 @@ public class JoystickMove : MonoBehaviour
         foreach (var rbody in rb)
         {
             if (rbody.gameObject.activeSelf)
+            {
                 rbody.velocity = new Vector3(horizontalMove, rbody.velocity.y, verticalMove);
+            }
         }
 
     }

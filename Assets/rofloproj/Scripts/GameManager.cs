@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         //    PauseMenu?.gameObject.SetActive(true);
         //    PauseMenu?.PreGame();
         //}
-     
+
     }
     private void SetScoreBeforeDeath()
     {
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
     }
     public void GenerateLevel()
     {
-        int platformCount = 0;
+        int platformCount = 1;
         List<GameObject> platfromList = new List<GameObject>();
         foreach (var platfrom in PlatformPrefab)
         {
@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
             i++;
             platformCount = i;
         }
+
         EndPlatform = Instantiate(EndPlatformPrefab[Random.Range(0, EndPlatformPrefab.Length)], PlatformStartPosition + new Vector3(PlatformStartPosition.x * 4 * platformCount, 0, 0), Quaternion.identity);
     }
 
@@ -192,7 +193,17 @@ public class GameManager : MonoBehaviour
         PauseMenu.joystick.SetActive(false);
         SendScoreAndWin();
 
-        GoogleMobileAdsManager.Instance.ShowInterstitial();
+        if (PlayerPrefs.GetInt("LevelUi") <= 6)
+        {
+            if (PlayerPrefs.GetInt("LevelUi") % 2 == 1)
+            {
+                GoogleMobileAdsManager.Instance.ShowInterstitial();
+            }
+        }
+        else
+        {
+            GoogleMobileAdsManager.Instance.ShowInterstitial();
+        }
         //GoogleMobileAdsManager.Instance.RequestBanner();
     }
 }

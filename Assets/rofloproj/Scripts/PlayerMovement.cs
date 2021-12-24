@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 GameManager.Instance.RespawnController.EnableRespawnPopup(this);
                 GameManager.Instance.RespawnController.RewardButton.SetActive(false);
-                GoogleMobileAdsManager.Instance.ShowInterstitial();
+                // GoogleMobileAdsManager.Instance.ShowInterstitial();
                 return;
             }
         }
@@ -114,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
                 collide.gameObject.GetComponent<ScoreMultiplier>().Activated = true;
                 collide.gameObject.GetComponent<ScoreMultiplier>().Fireworks.SetActive(true);
                 rb.isKinematic = true;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
                 rb.GetComponentInChildren<Collider>().enabled = false;
 
                 StartCoroutine(EndGamePosition(collide.transform));
