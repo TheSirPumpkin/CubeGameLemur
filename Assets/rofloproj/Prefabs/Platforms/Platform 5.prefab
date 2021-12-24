@@ -149474,7 +149474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Obstacles: []
-  StartsOn: 0
+  StartsOn: 6
 --- !u!1 &7236184770897251425
 GameObject:
   m_ObjectHideFlags: 0

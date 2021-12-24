@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class JoystickMove : MonoBehaviour
 {
+    private const int maxLevel = 10;
     public List<Rigidbody> rb = new List<Rigidbody>();
     public Joystick joystick;
     private float horizontalMove = 0f;
@@ -19,14 +20,14 @@ public class JoystickMove : MonoBehaviour
     }
     void Start()
     {
-        //if (PlayerPrefs.GetInt("Level") > 2)
-        //{
-        moveForce = 3f * (1.2f + (PlayerPrefs.GetInt("Level") / 10f));
-        //}
-        //else
-        // {
-        //     moveForce = 3f * (1.2f);
-        // }
+        if (PlayerPrefs.GetInt("Level") <= maxLevel)
+        {
+            moveForce = 3f * (1.2f + (PlayerPrefs.GetInt("Level") / maxLevel));
+        }
+        else
+        {
+            moveForce = 3f * (2.2f);
+        }
     }
 
     public void ResetMove()

@@ -67685,7 +67685,7 @@ MonoBehaviour:
   - {fileID: 1461335699022419571}
   - {fileID: 321384003792631076}
   - {fileID: 3950727846128045412}
-  StartsOn: 0
+  StartsOn: 4
 --- !u!1 &6967815754366275573
 GameObject:
   m_ObjectHideFlags: 0

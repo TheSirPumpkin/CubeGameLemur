@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WallOfDeath : MonoBehaviour
 {
+    private const int maxLevel = 10;
     public float MoveSpeed;
     public PauseMenu PauseMenu;
     private bool startLevel;
@@ -30,7 +31,14 @@ public class WallOfDeath : MonoBehaviour
     {
         if (startLevel)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * MoveSpeed * PlayerPrefs.GetInt("Level")/2);
+            if (PlayerPrefs.GetInt("Level") <= maxLevel)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * MoveSpeed * PlayerPrefs.GetInt("Level") / 2);
+            }
+            else
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * MoveSpeed * (maxLevel/2));
+            }
         }
     }
 }
