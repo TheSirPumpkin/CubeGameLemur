@@ -20,13 +20,13 @@ public class JoystickMove : MonoBehaviour
     }
     void Start()
     {
-        if (PlayerPrefs.GetInt("Level") <= maxLevel)
+        if (PlayerPrefs.GetInt("Level") <= 9)
         {
-            moveForce = 3f * (1.2f + (PlayerPrefs.GetInt("Level") / maxLevel));
+            moveForce = 3f * (1.1f + (PlayerPrefs.GetInt("Level") / maxLevel));
         }
         else
         {
-            moveForce = 3f * (2.2f);
+            moveForce = 3f * (1.5f);
         }
     }
 

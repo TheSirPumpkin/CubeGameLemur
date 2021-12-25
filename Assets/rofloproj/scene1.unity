@@ -292,8 +292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc0554636d439b4f9f1757910aa85ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atPlayer: {fileID: 0}
   MoveSpeed: -0.5
   PauseMenu: {fileID: 939295375}
+  SpeedDecrease: 0
 --- !u!65 &26318244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12418,8 +12420,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc0554636d439b4f9f1757910aa85ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: -0.85
+  atPlayer: {fileID: 0}
+  MoveSpeed: -1
   PauseMenu: {fileID: 939295375}
+  SpeedDecrease: 2
 --- !u!1 &1401666677
 GameObject:
   m_ObjectHideFlags: 0
