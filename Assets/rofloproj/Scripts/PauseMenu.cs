@@ -15,7 +15,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject joystick;
     public GameObject StartGamePanel;
     public GameObject GamePanel;
-    bool resumePressed;
+    private bool resumePressed;
+    private bool preGameDisabled;
 
     void Awake()
     {
@@ -30,6 +31,14 @@ public class PauseMenu : MonoBehaviour
     public void ShowHighScore()
     {
         Social.ShowLeaderboardUI();
+    }
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus && Time.timeScale != 0 && !gamePause && preGameDisabled)
+        {
+            Debug.Log("OnApplicationPause " + gamePause + " " + Time.timeScale);
+            Pause();
+        }
     }
     public void Resume()
     {
@@ -48,7 +57,7 @@ public class PauseMenu : MonoBehaviour
             }
             JoystickMove.rb[0].isKinematic = true;
             JoystickMove.rb[0].isKinematic = false;
-            joystick.GetComponent<DynamicJoystick>().HandleInput(0,Vector2.zero,Vector2.zero,null);
+            joystick.GetComponent<DynamicJoystick>().HandleInput(0, Vector2.zero, Vector2.zero, null);
 
             //GoogleMobileAdsManager.Instance.CloseBannerAd();
         }
@@ -71,11 +80,12 @@ public class PauseMenu : MonoBehaviour
         StartGamePanel.SetActive(true);
         GamePanel.SetActive(false);
         gamePause = true;
+        preGameDisabled = true;
 
         //GoogleMobileAdsManager.Instance.RequestBanner();
     }
 
-   
+
     public void StartNextLevel()
     {
         //Application.LoadLevelAsync(Application.loadedLevel);
